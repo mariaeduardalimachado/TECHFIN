@@ -1,0 +1,450 @@
+/* variáveis */
+:root {
+  --verde-escuro: #0F3D2E;
+  --verde-principal: #2E7D5B;
+  --verde-claro: #A7D7B8;
+  --fundo: #F8F9F6;
+  --rosa-alerta: #F4C7C3;
+  --texto: #1f2a24;
+  --texto-suave: #5b6b62;
+  --borda: #e3e9e4;
+  --vermelho: #c0392b;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", Arial, sans-serif; /* fonte dos textos */
+  background-color: var(--fundo);
+  color: var(--texto);
+  line-height: 1.5; 
+}
+
+h1, h2 {
+  font-family: "Poppins", Arial, sans-serif;
+  color: var(--verde-escuro);
+}
+
+ul { list-style: none; }        
+a  { color: inherit; text-decoration: none; } 
+
+
+.pagina {
+  display: flex;
+  min-height: 100vh; 
+}
+
+.menu-lateral {
+  width: 230px;
+  flex-shrink: 0;         /* a largura do menu nunca muda */
+  background-color: var(--verde-escuro);
+  color: #fff;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column; /* empilha os itens um embaixo do outro */
+  position: sticky;       /* o menu acompanha a rolagem da página */
+  top: 0;
+  height: 100vh;
+}
+
+.menu-lateral .marca {
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+  padding: 0 8px;
+  display: flex;       
+  align-items: center;  
+  gap: 10px;            /* espaço entre o logo e o nome */
+  line-height: 1.2;
+}
+
+.logo-marca {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;       
+}
+
+.menu-lateral nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; 
+  flex: 1;  
+}
+
+.menu-lateral a {
+  display: flex;        
+  align-items: center;
+  gap: 12px;          
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  color: #d7ece0;
+  transition: background-color 0.2s; 
+}
+
+.menu-lateral a i {
+  width: 20px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.menu-lateral a:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Classe "ativo": marca em qual página estamos  */
+.menu-lateral a.ativo {
+  background-color: var(--verde-principal);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* margin-top: auto joga o "Sair" para o final do menu */
+.menu-lateral .sair {
+  margin-top: auto;
+}
+
+
+.conteudo {
+  flex: 1;       /* ocupa todo o espaço restante ao lado do menu */
+  padding: 32px 40px;
+  min-width: 0;  /* evita que gráficos estourem a largura da tela */
+}
+
+
+/* ---------- 4. TOPO (título + filtro) ---------- */
+.topo {
+  min-height: 72px;               /* mesma altura em todas as páginas */
+  display: flex;
+  justify-content: space-between; /* título à esquerda, filtro à direita */
+  align-items: flex-start;
+  flex-wrap: wrap;                /* se faltar espaço, quebra a linha */
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.topo h1 { font-size: 1.7rem; }
+
+.topo p {
+  color: var(--texto-suave);
+  font-size: 0.92rem;
+}
+
+/* Filtro de período da página Relatórios (o JS vai ler o valor escolhido) */
+.filtro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+
+.filtro select {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background-color: #fff;
+  color: var(--texto);
+}
+
+/* :focus-visible mostra um contorno quando o usuário navega pelo teclado */
+.filtro select:focus-visible {
+  outline: 2px solid var(--verde-principal);
+  outline-offset: 2px;
+}
+
+
+/* ---------- 5. RESUMO (3 cartões) ----------
+   display: grid com 3 colunas de tamanho igual (repeat(3, 1fr)).
+   "fr" significa "fração do espaço disponível". */
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.cartao {
+  border-radius: 14px; /* cantos arredondados */
+  padding: 18px 20px;
+  display: flex;        /* ícone à esquerda, textos à direita */
+  align-items: center;
+  gap: 16px;
+}
+
+/* Textos do cartão (rótulo em cima, valor embaixo) */
+.cartao-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cartao-texto span {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+.cartao strong {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 1.5rem;
+}
+
+/* Cada cartão tem uma cor própria: verde = receita, rosa = despesa */
+.cartao.receitas { background-color: var(--verde-claro); }
+.cartao.despesas { background-color: var(--rosa-alerta); }
+.cartao.saldo    { background-color: #fff; border: 1px solid var(--borda); }
+
+.cartao.receitas strong { color: var(--verde-escuro); }
+.cartao.despesas strong { color: var(--vermelho); }
+.cartao.saldo strong    { color: var(--verde-principal); }
+
+
+/* ---------- 6. GRADE E PAINÉIS ----------
+   A grade divide a área em 2 colunas: a primeira um pouco maior (1.2fr). */
+.grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); /* minmax(0, ...) impede o gráfico de alargar a coluna */
+  gap: 20px;
+}
+
+/* Painel = "caixa branca" com borda e sombra leve */
+.painel {
+  background-color: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 2px 8px rgba(15, 61, 46, 0.06);
+}
+
+/* Mesma altura mínima nas duas páginas (Dashboard e Relatórios) */
+.grade .painel {
+  min-height: 330px;
+}
+
+.painel h2 {
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+}
+
+
+/* ---------- 7. ROSCA (despesas por categoria) ----------
+   Gráfico provisório feito só com CSS, sem JavaScript.
+   Depois o JS pode trocar por um gráfico do Chart.js. */
+.area-rosca {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* conic-gradient cria um degradê em "pizza".
+   Cada linha diz: cor, de onde começa, até onde vai (em %). */
+.rosca {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%; /* transforma o quadrado em círculo */
+  position: relative;
+  background: conic-gradient(
+    #0F3D2E 0 35%,     /* Moradia */
+    #2E7D5B 35% 55%,   /* Alimentação */
+    #A7D7B8 55% 70%,   /* Transporte */
+    #d9a441 70% 80%,   /* Lazer */
+    #7fa6c9 80% 100%   /* Outros */
+  );
+  flex-shrink: 0;
+}
+
+/* ::after cria um círculo branco no meio, formando o "furo" da rosca.
+   O texto vem do atributo data-total que está no HTML. */
+.rosca::after {
+  content: attr(data-total);
+  position: absolute;
+  inset: 30px; /* distância das 4 bordas */
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--verde-escuro);
+}
+
+.legenda {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  flex: 1;
+  min-width: 140px;
+}
+
+.legenda li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* A bolinha colorida vem de ::before e usa a cor definida no HTML (--cor) */
+.legenda li::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--cor);
+}
+
+.legenda b {
+  margin-left: auto; /* empurra a porcentagem para a direita */
+  font-weight: 600;
+}
+
+
+/* ---------- 8. LISTA DOS ÚLTIMOS LANÇAMENTOS ---------- */
+.lista-lancamentos {
+  display: flex;
+  flex-direction: column;
+}
+
+.lista-lancamentos li {
+  display: flex;
+  justify-content: space-between; /* nome à esquerda, valor à direita */
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--borda);
+}
+
+/* :last-child = o último item da lista, que fica sem linha embaixo */
+.lista-lancamentos li:last-child { border-bottom: none; }
+
+.lista-lancamentos .nome { font-weight: 600; font-size: 0.92rem; }
+
+.lista-lancamentos small {
+  display: block;
+  color: var(--texto-suave);
+  font-size: 0.78rem;
+}
+
+/* Cores do valor: o JS escolhe a classe conforme o tipo do lançamento */
+.valor-despesa { color: var(--vermelho); font-weight: 600; }
+.valor-receita { color: var(--verde-principal); font-weight: 600; }
+
+/* Mensagem para quando não houver nenhum lançamento */
+.vazio {
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+  padding: 12px 0;
+}
+
+
+/* ---------- 9. CAIXA DO GRÁFICO (Relatórios) ----------
+   O Chart.js desenha dentro do <canvas>. A caixa precisa ter altura
+   definida, senão o gráfico fica sem tamanho. */
+.caixa-grafico {
+  position: relative;
+  height: 240px;
+}
+
+.caixa-grafico canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* ---------- 9.1 ÍCONES (Font Awesome) ----------
+   O Font Awesome funciona como uma fonte de letras: cada ícone é um
+   "caractere". Por isso o tamanho vem de font-size e a cor de color. */
+
+/* Ícone grande dos cartões de resumo */
+.cartao-icone { font-size: 1.7rem; }
+
+.cartao.receitas .cartao-icone { color: var(--verde-principal); }
+.cartao.despesas .cartao-icone { color: var(--vermelho); }
+.cartao.saldo .cartao-icone    { color: var(--verde-principal); }
+
+/* Sino e ícone do usuário no canto direito do topo */
+.topo-acoes {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 1.15rem;
+  color: var(--verde-escuro);
+}
+
+.avatar {
+  font-size: 2rem;
+  color: var(--verde-principal);
+}
+
+/* Ícone + nome + data de cada lançamento */
+.lancamento {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Quadradinho colorido atrás do ícone do lançamento */
+.icone-caixa {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.icone-caixa.despesa { background-color: var(--rosa-alerta); color: var(--vermelho); }
+.icone-caixa.receita { background-color: #d6efdf;            color: var(--verde-principal); }
+.icone-caixa.lazer   { background-color: #e9ddf7;            color: #8e44ad; }
+
+
+/* ---------- 10. CELULAR (RESPONSIVO) ----------
+   @media aplica regras só quando a tela é menor que o valor indicado. */
+
+/* Telas médias: os painéis passam a ficar um embaixo do outro */
+@media (max-width: 900px) {
+  .grade { grid-template-columns: 1fr; }
+}
+
+/* Celular: o menu vai para o topo e os cartões ficam empilhados */
+@media (max-width: 720px) {
+  .pagina { flex-direction: column; }
+
+  .menu-lateral {
+    width: 100%;
+    height: auto;
+    position: static;
+    padding: 14px 16px;
+  }
+
+  .menu-lateral .marca { margin-bottom: 12px; }
+
+  .menu-lateral nav {
+    flex-direction: row; /* links lado a lado */
+    flex-wrap: wrap;
+  }
+
+  .menu-lateral .sair { margin-top: 0; }
+
+  .conteudo { padding: 24px 16px; }
+
+  .resumo { grid-template-columns: 1fr; }
+
+  .grade .painel { min-height: 0; }
+}

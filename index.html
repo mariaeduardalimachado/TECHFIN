@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- Faz o site se ajustar à largura da tela -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Meu Controle Financeiro</title>
+
+  <!-- Fontes: Poppins (títulos) e Montserrat (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Ícones online (Font Awesome).  -->
+     
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Estilos do grupo (css) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- A div "pagina" junta o menu lateral e o conteúdo lado a lado -->
+  <div class="pagina">
+
+    <!-- ===== MENU LATERAL =====
+         A classe "ativo" destaca a página em que estamos. -->
+    <aside class="menu-lateral"> 
+      <div class="marca">
+        <img src="logo.png" alt="Logo do Meu Controle Financeiro" class="logo-marca">
+        <span>Meu Controle Financeiro</span>
+      </div>
+      <nav>
+        <a href="index.html" class="ativo"><i class="fa-solid fa-house"></i>Dashboard</a>
+        <a href="lancamentos.html"><i class="fa-solid fa-right-left"></i>Lançamentos</a>
+        <a href="categorias.html"><i class="fa-solid fa-layer-group"></i>Categorias</a>
+        <a href="metas.html"><i class="fa-solid fa-bullseye"></i>Metas</a>
+        <a href="relatorios.html"><i class="fa-solid fa-chart-simple"></i>Relatórios</a>
+        <a href="login.html" class="sair"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+      </nav>
+    </aside>
+
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+    <main class="conteudo">
+
+      <!-- Saudação. O id "nome-usuario" permite ao JS trocar o nome -->
+      <header class="topo">
+        <div>
+          <h1>Olá, <span id="nome-usuario"></span>! 👋</h1>
+          <p>Aqui está o resumo das suas finanças este mês.</p>
+        </div>
+
+        <!-- Sino de notificações e ícone do usuário (canto direito) -->
+        <div class="topo-acoes">
+          <i class="fa-regular fa-bell"></i>
+          <i class="fa-solid fa-circle-user avatar"></i>
+        </div>
+      </header>
+
+      <!-- ===== RESUMO: 3 CARTÕES =====
+          Cada cartão tem um id. 
+           O valor inicial R$ 0,00 é trocado pelo JS. -->
+      <section class="resumo">
+        <div class="cartao receitas">
+          <i class="fa-solid fa-arrow-trend-up cartao-icone"></i>
+          <div class="cartao-texto">
+            <span>Receitas</span>
+            <strong id="total-receitas">R$ 0,00</strong>
+          </div>
+        </div>
+        <div class="cartao despesas">
+          <i class="fa-solid fa-arrow-trend-down cartao-icone"></i>
+          <div class="cartao-texto">
+            <span>Despesas</span>
+            <strong id="total-despesas">R$ 0,00</strong>
+          </div>
+        </div>
+        <div class="cartao saldo">
+          <i class="fa-solid fa-wallet cartao-icone"></i>
+          <div class="cartao-texto">
+            <span>Saldo</span>
+            <strong id="saldo-atual">R$ 0,00</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- A "grade" coloca os dois painéis lado a lado -->
+      <div class="grade">
+
+        <!-- ===== PAINEL 1: DESPESAS POR CATEGORIA ===== -->
+        <section class="painel">
+          <h2>Despesas por categoria</h2>
+          <div class="area-rosca">
+
+             <!-- Rosca (gráfico em formato de pizza com furo no meio).
+         - O CSS desenha o círculo e o furo (conic-gradient e ::after).
+         - O JS calcula as fatias e troca o background quando há dados.
+         - O texto do centro vem do atributo data-total (total de despesas do mês). -->
+            <div class="rosca" id="grafico-categorias" data-total="R$ 0,00"></div>
+
+            <!-- Legenda: lista vazia no HTML.
+         O JS cria um <li> para cada categoria, com o nome, a porcentagem
+         e a cor da bolinha (variável --cor). -->
+            <ul class="legenda" id="legenda-categorias">
+              <!-- O JS cria as linhas da legenda -->
+            </ul>
+          </div>
+        </section>
+
+        <!-- ===== PAINEL 2: ÚLTIMOS LANÇAMENTOS =====
+             O JS vai apagar estes exemplos e criar um <li> para cada
+             lançamento salvo (createElement + forEach).
+             As classes valor-despesa e valor-receita mudam a cor. -->
+        <section class="painel">
+          <h2>Últimos lançamentos</h2>
+          <ul class="lista-lancamentos" id="ultimos-lancamentos">
+            <!-- O JS cria um <li> para cada lançamento -->
+          </ul>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- SCRIPTS: o storage.js vem primeiro, porque o dashboard.js usa as funções dele -->
+  <script src="js/storage.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

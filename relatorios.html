@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- Faz o site se ajustar à largura da tela do celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatórios | Meu Controle Financeiro</title>
+
+  <!-- Fontes do Google: Poppins (títulos) e Montserrat (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Ícones online (Font Awesome). Para usar: <i class="fa-solid fa-NOME"></i>.
+       Lista de nomes: fontawesome.com/icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Estilos do grupo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pagina">
+
+    <!-- ===== MENU LATERAL (igual ao das outras páginas) ===== -->
+    <aside class="menu-lateral">
+      <!-- Marca do site: logo (imagem logo.png) + nome, lado a lado.
+           O atributo alt descreve a imagem para leitores de tela e aparece se ela não carregar. -->
+      <div class="marca">
+        <img src="logo.png" alt="Logo do Meu Controle Financeiro" class="logo-marca">
+        <span>Meu Controle Financeiro</span>
+      </div>
+      <nav>
+        <a href="index.html"><i class="fa-solid fa-house"></i>Dashboard</a>
+        <a href="lancamentos.html"><i class="fa-solid fa-right-left"></i>Lançamentos</a>
+        <a href="categorias.html"><i class="fa-solid fa-layer-group"></i>Categorias</a>
+        <a href="metas.html"><i class="fa-solid fa-bullseye"></i>Metas</a>
+        <a href="relatorios.html" class="ativo"><i class="fa-solid fa-chart-simple"></i>Relatórios</a>
+        <a href="login.html" class="sair"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+      </nav>
+    </aside>
+
+    <main class="conteudo">
+
+      <!-- ===== TOPO: TÍTULO + FILTRO DE PERÍODO =====
+           O JS vai "escutar" o select (evento change) e recalcular
+           tudo conforme o período escolhido. -->
+      <header class="topo">
+        <div>
+          <h1>Relatórios</h1>
+          <p>Acompanhe a evolução das suas finanças.</p>
+        </div>
+
+        <div class="filtro">
+          <label for="filtro-periodo">Período:</label>
+          <select id="filtro-periodo">
+            <option value="mes-atual">Este mês</option>
+            <option value="3-meses">Últimos 3 meses</option>
+            <option value="6-meses" selected>Últimos 6 meses</option>
+            <option value="ano">Este ano</option>
+          </select>
+        </div>
+      </header>
+
+      <!-- ===== INDICADORES DO PERÍODO =====
+           Mesmo visual do Dashboard (classe "cartao").
+           Valores de exemplo: o JS vai substituí-los pelos calculados. -->
+      <section class="resumo">
+        <div class="cartao receitas">
+          <i class="fa-solid fa-arrow-trend-up cartao-icone"></i>
+          <div class="cartao-texto">
+            <span>Receitas</span>
+            <strong id="relatorio-receitas">R$ 4.200,00</strong>
+          </div>
+        </div>
+        <div class="cartao despesas">
+          <i class="fa-solid fa-arrow-trend-down cartao-icone"></i>
+          <div class="cartao-texto">
+            <span>Despesas</span>
+            <strong id="relatorio-despesas">R$ 2.850,00</strong>
+          </div>
+        </div>
+        <div class="cartao saldo">
+          <i class="fa-solid fa-wallet cartao-icone"></i>
+          <div class="cartao-texto">
+            <span>Saldo</span>
+            <strong id="relatorio-saldo">R$ 1.350,00</strong>
+          </div>
+        </div>
+      </section>
+
+      <div class="grade">
+
+        <!-- ===== GRÁFICO DE LINHA: EVOLUÇÃO DO SALDO =====
+             O <canvas> é uma "tela em branco". O Chart.js desenha
+             o gráfico dentro dele. Fica vazio até o JS ser ligado. -->
+        <section class="painel">
+          <h2>Evolução do saldo</h2>
+          <div class="caixa-grafico">
+            <canvas id="grafico-evolucao"></canvas>
+          </div>
+        </section>
+
+        <!-- ===== ROSCA: DESPESAS POR CATEGORIA ===== -->
+        <section class="painel">
+          <h2>Despesas por categoria</h2>
+          <div class="area-rosca">
+            <div class="rosca" id="relatorio-grafico-categorias" data-total="R$ 2.850"></div>
+            <ul class="legenda" id="relatorio-legenda-categorias">
+              <li style="--cor:#0F3D2E">Moradia <b>35%</b></li>
+              <li style="--cor:#2E7D5B">Alimentação <b>20%</b></li>
+              <li style="--cor:#A7D7B8">Transporte <b>15%</b></li>
+              <li style="--cor:#d9a441">Lazer <b>10%</b></li>
+              <li style="--cor:#7fa6c9">Outros <b>20%</b></li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- SCRIPTS (serão ativados quando o JavaScript estiver pronto):
+       primeiro a biblioteca Chart.js, depois o nosso código -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script> -->
+  <!-- <script src="js/storage.js"></script> -->
+  <!-- <script src="js/relatorios.js"></script> -->
+</body>
+</html>
