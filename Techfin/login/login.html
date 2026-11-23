@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFin | Login</title>
+    <!-- CSS da página -->
+    <link rel="stylesheet" href="css/login.css">
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <main class="login-techfin">
+        <!--Lado logo - esquerdo  -->
+        <section class="banner">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <h1>TechFin</h1>
+            <p>Tecnologia para seu controle financeiro</p>
+        </section>
+
+
+        <!--Lado formulário - direito -->
+        <section class="login">
+            <h2>Acesse sua conta</h2>
+            <p>Entre no TechFin para gerenciar suas finanças.</p>
+            <!-- formulário de login -->
+            <form class="formulario-login">
+                <label for="email">E-mail</label>
+                <div class="campo">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="seuemail@gmail.com" required>
+                </div>
+
+                <label for="senha">Senha</label>
+                <div class="campo">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="senha" name="senha" placeholder="******" required>
+                </div>
+
+                <!-- Botão de entrar -->
+                <button type="submit"> Entrar <i class="fa-solid fa-arrow-right"></i></button>
+
+            </form>
+            <!-- link pra cadastro -->
+            <section class="link-cadastro">
+                <p>Ainda não tem uma conta?</p>
+                <a href="../cadastro/cadastro.html">Cadastre-se</a>
+            </section>
+            <section class="link-sobre">
+                <a href="../sobre/sobre.html">Sobre o TechFin</a>
+            </section>
+        </section>
+    </main>
+</body>
+<script src="js/login.js"></script>
+</html>

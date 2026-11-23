@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFin | Cadastro</title>
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   
+</head>
+
+<body>
+    <main class="cadastro-techfin">
+
+        <!-- Lado esquerdo -->
+        <section class="banner-cadastro">
+            <div class="logo">
+                <img src="../login/img/logo.png" alt="Símbolo TechFin">
+            </div>
+            <h1>TechFin</h1>
+            <p>Tecnologia para seu controle financeiro</p>
+        </section>
+
+        <!-- Lado direito -->
+        <section class="cadastro">
+            <h2>Crie sua conta</h2>
+            <p>Preencha os dados abaixo.</p>
+
+            <!-- Formulário de cadastro -->
+            <form class="formulario-cadastro" id="formCadastro">
+
+                <label for="nome">Nome completo</label>
+                <div class="campo">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                </div>
+
+                <label for="email">E-mail</label>
+                <div class="campo">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="seuemail@gmail.com" required>
+                </div>
+
+                <label for="senha">Senha</label>
+                <div class="campo">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required>
+                </div>
+
+                <label for="confirmarSenha">Confirmar senha</label>
+                <div class="campo">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="confirmarSenha" name="confirmarSenha"
+                        placeholder="Digite a senha novamente" required>
+                </div>
+
+                <button type="submit">
+                    Cadastrar
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <!-- Link para login -->
+            <section class="link-login">
+                <p>Já tem uma conta?</p>
+                <a href="../login/login.html">Entrar</a>
+            </section>
+            <section class="link-sobre">
+                <a href="../sobre/sobre.html">Sobre o TechFin</a>
+            </section>
+        </section>
+    </main>
+</body>
+<script src="js/cadastro.js"></script>
+</html>

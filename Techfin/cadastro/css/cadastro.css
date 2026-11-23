@@ -1,0 +1,261 @@
+
+/* Fontes */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Variáveis */
+:root {
+    --fonte-titulo: 'Poppins', sans-serif;
+    --fonte-texto: 'Montserrat', sans-serif;
+
+    --verde-escuro: #0F3D2E;
+    --verde-principal: #198754;
+    --verde-apoio: #34D399;
+
+    --fundo-pagina: #F8F9FA;
+    --fundo-branco: #FFFFFF;
+    --fundo-verde: #E8F5EE;
+
+    --texto-principal: #212529;
+    --texto-secundario: #6C757D;
+
+    --cor-borda: #DEE2E6;
+}
+
+/* Configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--fundo-pagina);
+    font-family: var(--fonte-texto);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+/* Cartão principal */
+.cadastro-techfin {
+    display: flex;
+    width: 90%;
+    max-width: 1100px;
+    min-height: 650px;
+    background-color: var(--fundo-branco);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.30);
+}
+
+/* Banner esquerdo */
+.banner-cadastro {
+    flex: 0 0 38%;
+    background-color: var(--verde-escuro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
+
+.banner-cadastro h1 {
+    font-family: var(--fonte-titulo);
+    color: var(--fundo-branco);
+    font-size: 38px;
+    margin-top: 15px;
+}
+
+.banner-cadastro p {
+    font-family: var(--fonte-texto);
+    color: var(--fundo-branco);
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 1.6;
+    max-width: 260px;
+}
+
+/* Área de cadastro */
+.cadastro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 45px 75px;
+}
+
+.cadastro h2 {
+    font-family: var(--fonte-titulo);
+    color: var(--verde-escuro);
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.cadastro > p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* Formulário */
+.formulario-cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formulario-cadastro label {
+    font-family: var(--fonte-texto);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto-principal);
+}
+
+/* Campos */
+.campo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 12px;
+    background-color: var(--fundo-branco);
+    transition: border-color 0.3s;
+}
+
+.campo i {
+    color: var(--verde-principal);
+    font-size: 17px;
+}
+
+.campo input {
+    flex: 1;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-family: var(--fonte-texto);
+    font-size: 13px;
+    color: var(--texto-principal);
+    background: transparent;
+}
+
+.campo:focus-within {
+    border-color: var(--verde-principal);
+}
+
+/* Botão cadastrar */
+.formulario-cadastro button {
+    margin-top: 15px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--verde-principal);
+    color: var(--fundo-branco);
+    font-family: var(--fonte-titulo);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.formulario-cadastro button:hover {
+    background-color: var(--verde-escuro);
+}
+
+.formulario-cadastro button i {
+    margin-left: 8px;
+}
+
+/* Link para login */
+.link-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.link-login p {
+    font-size: 13px;
+    color: var(--texto-secundario);
+}
+
+.link-login a {
+    color: var(--verde-principal);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.link-login a:hover {
+    text-decoration: underline;
+}
+/* Link Sobre */
+.link-sobre {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-sobre a {
+    color: var(--verde-principal);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.link-sobre a:hover {
+    color: var(--verde-escuro);
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .cadastro-techfin {
+        flex-direction: column;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .banner-cadastro {
+        padding: 25px;
+    }
+
+    .logo img {
+        width: 90px;
+    }
+
+    .banner-cadastro h1 {
+        font-size: 28px;
+    }
+
+    .cadastro {
+        padding: 35px 25px;
+    }
+}
+
+/* Mensagem de erro do formulário (criada pelo JavaScript) */
+.mensagem-erro {
+    margin: 0;
+    font-size: 13px;
+    color: #d93025;
+}
+
+/* Quando não tem erro, o parágrafo some e não ocupa espaço */
+.mensagem-erro:empty {
+    display: none;
+}

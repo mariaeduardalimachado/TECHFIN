@@ -1,0 +1,286 @@
+
+/* Fontes */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Ícones */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+
+/* Cores */
+:root {
+    --verde-escuro: #164B3A;
+    --verde-principal: #198754;
+    --verde-destaque: #34D399;
+    --verde-claro: #E8F5EE;
+    --fundo: #F8F9FA;
+    --branco: #FFFFFF;
+    --texto: #212529;
+    --texto-secundario: #6C757D;
+    --borda: #DEE2E6;
+}
+
+/* Configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--fundo);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--texto);
+    padding: 30px 20px;
+}
+
+.pagina-sobre {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: var(--branco);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Cabeçalho */
+.cabecalho {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.logo {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+.cabecalho h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.cabecalho p {
+    font-size: 14px;
+    margin-top: 5px;
+    color: var(--verde-claro);
+}
+
+/* Conteúdo */
+.conteudo {
+    padding: 40px 55px;
+}
+
+.conteudo h2 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--verde-escuro);
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.secao-projeto,
+.secao-informacoes,
+.secao-equipe {
+    margin-bottom: 40px;
+}
+
+.secao-projeto p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--texto-secundario);
+}
+
+/* Informações acadêmicas */
+.secao-informacoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.secao-informacoes h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+}
+
+.informacao {
+    background-color: var(--fundo);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.informacao h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--verde-principal);
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.informacao p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--texto-secundario);
+}
+
+/* Link da instituição */
+.link-instituicao {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--verde-principal);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.link-instituicao:hover {
+    color: var(--verde-escuro);
+    text-decoration: underline;
+}
+
+/* Equipe */
+.descricao-equipe {
+    font-size: 14px;
+    color: var(--texto-secundario);
+    margin-bottom: 22px;
+}
+
+.equipe {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.integrante {
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 22px 16px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.integrante:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(22, 75, 58, 0.12);
+}
+
+.icone-integrante {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background-color: var(--verde-claro);
+    color: var(--verde-principal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.integrante h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: var(--verde-escuro);
+    margin-bottom: 8px;
+}
+
+.prontuario {
+    font-size: 12px;
+    color: var(--texto-secundario);
+    margin-bottom: 15px;
+}
+
+.responsabilidade {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--texto-secundario);
+}
+
+.responsabilidade strong {
+    color: var(--verde-principal);
+}
+
+/* Rodapé */
+.rodape {
+    background-color: var(--verde-claro);
+    text-align: center;
+    padding: 18px;
+}
+
+.rodape p {
+    font-size: 12px;
+    color: var(--verde-escuro);
+}
+/* Links de navegação */
+.links-voltar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.links-voltar a {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.links-voltar a:hover {
+    background-color: var(--verde-escuro);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo {
+        padding: 30px 25px;
+    }
+
+    .equipe {
+        grid-template-columns: 1fr;
+    }
+
+    .secao-informacoes {
+        grid-template-columns: 1fr;
+    }
+
+    .secao-informacoes h2 {
+        grid-column: auto;
+    }
+}
+
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px 10px;
+    }
+
+    .cabecalho {
+        padding: 35px 15px;
+    }
+
+    .cabecalho h1 {
+        font-size: 27px;
+    }
+
+    .conteudo {
+        padding: 25px 18px;
+    }
+
+    .conteudo h2 {
+        font-size: 19px;
+    }
+}
